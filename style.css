@@ -50,7 +50,7 @@ button {
   border: none;
   cursor: pointer;
   background: #93c572;
-  color: #fff;
+  color: #000;
   border-radius: 20px;
   transition: 0.5px;
 }
@@ -65,4 +65,17 @@ button:hover {
 }
 .btnSearch button {
   width: 45%;
+}
+table {
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+}
+
+table th {
+  text-transform: uppercase;
+}
+td,
+th {
+  padding: 5px;
 }
