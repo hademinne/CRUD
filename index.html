@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ادارة المنتجات</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="crud">
+      <!-- head -->
+      <div class="head">
+        <h2>crud</h2>
+        <p>PRODUCT MANAGEMENT SYSTEM</p>
+      </div>
+      <!-- inputs -->
+      <div class="inputs">
+        <input placeholder="title" type="text " id="title" />
+        <div class="price">
+          <input type="number " placeholder="price" id="price" />
+          <input type="number " placeholder="taxes" id="taxes" />
+          <input type="number " placeholder="discount" id="discount" />
+          <small id="total">12345</small>
+        </div>
+        <input type="number " placeholder="count" id="count" />
+        <input type="text " placeholder="category" id="category" />
+        <button id="submit">Create</button>
+      </div>
+      <!-- outputs -->
+      <div class="outputs">
+        <div class="searchBlock">
+          <input type="text" id="search" placeholder="search" />
+          <div class="btnSearch">
+            <button id="searchTitle">Search By Title</button>
+            <button id="searchCategory">Search By category</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
