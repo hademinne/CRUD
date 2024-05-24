@@ -3,48 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ادارة المنتجات</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>ادارة المنتجات||للعناية بالشعر</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="icon.png" type="image/x-icon" />
   </head>
   <body>
     <div class="crud">
       <!-- head -->
       <div class="head">
-        <h2>crud</h2>
+        <h2>Vala HAir-care</h2>
         <p>PRODUCT MANAGEMENT SYSTEM</p>
       </div>
       <!-- inputs -->
       <div class="inputs">
-        <input placeholder="title" type="text " id="title" />
+        <input placeholder="title" type="text" id="title" />
         <div class="price">
           <input
             onkeyup="getTotal()"
-            type="number "
+            type="number"
             placeholder="price"
             id="price"
           />
           <input
             onkeyup="getTotal()"
-            type="number "
+            type="number"
             placeholder="taxes"
             id="taxes"
           />
           <input
             onkeyup="getTotal()"
-            type="number "
+            type="number"
             placeholder="ads"
             id="ads"
           />
           <input
             onkeyup="getTotal()"
-            type="number "
+            type="number"
             placeholder="discount"
             id="discount"
           />
           <small id="total">12345</small>
         </div>
-        <input type="number " placeholder="count" id="count" />
-        <input type="text " placeholder="category" id="category" />
+        <input type="number" placeholder="count" id="count" />
+        <input type="text" placeholder="category" id="category" />
         <button id="submit">Create</button>
       </div>
       <!-- outputs -->

@@ -10,7 +10,7 @@ let submit = document.getElementById("submit");
 
 //get total
 function getTotal() {
-  if (price.value != "") {
+  if (price.value !== "") {
     let result = +price.value + +taxes.value + +ads.value - +discount.value;
     total.innerHTML = result;
     total.style.background = "#040";
@@ -18,4 +18,42 @@ function getTotal() {
     total.innerHTML = "";
     total.style.background = "#a00d02";
   }
+}
+
+//Create Product
+let dataPro;
+if (localStorage.product != null) {
+  dataPro = JSON.parse(localStorage.product);
+} else {
+  dataPro = [];
+}
+
+submit.onclick = function () {
+  let newPro = {
+    title: title.value,
+    price: price.value,
+    taxes: taxes.value,
+    ads: ads.value,
+    discount: discount.value,
+    total: total.innerHTML,
+    count: count.value,
+    category: category.value,
+  };
+  dataPro.push(newPro);
+  localStorage.setItem("product", JSON.stringify(dataPro));
+  // console.log(dataPro);
+  clearData();
+};
+
+//clear Input
+
+function clearData() {
+  title.value = "";
+  price.value = "";
+  taxes.value = "";
+  ads.value = "";
+  discount.value = "";
+  count.value = "";
+  category.value = "";
+  total.innerHTML = "";
 }
