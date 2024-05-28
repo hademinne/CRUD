@@ -30,7 +30,7 @@ function getTotal() {
     total.style.color = "black";
   } else {
     total.innerHTML = "";
-    total.style.background = "#93c572";
+    // total.style.background = "#a00d02";
   }
 }
 
@@ -53,7 +53,15 @@ submit.onclick = function () {
     count: count.value,
     category: category.value,
   };
-  dataPro.push(newPro);
+  //Count
+  if (newPro.count > 1) {
+    for (let i = 0; i < newPro.count; i++) {
+      dataPro.push(newPro);
+    }
+  } else {
+    dataPro.push(newPro);
+  }
+
   localStorage.setItem("product", JSON.stringify(dataPro));
   // console.log(dataPro);
   clearData();
@@ -91,10 +99,31 @@ function showData() {
       <button id="update">update</button>
     </td>
     <td>
-      <button id="delete">delete</button>
+      <button onclick='deleteData(${i})' id="delete">delete</button>
     </td>
   </tr>`;
   }
   document.getElementById("tbody").innerHTML = table;
+  const btnDelete = document.getElementById("deleteAll");
+  if (dataPro.length > 0) {
+    btnDelete.innerHTML = ` <button onclick='deleteAll()'>Delete All (${dataPro.length}) </button>`;
+  } else {
+    btnDelete.innerHTML = "";
+  }
 }
+console.log("table");
 showData();
+
+//delete data
+function deleteData(i) {
+  // console.log(i);
+  dataPro.splice(i, 1);
+  localStorage.product = JSON.stringify(dataPro);
+  showData();
+}
+
+function deleteAll() {
+  localStorage.clear();
+  dataPro.splice(0);
+  showData();
+}
