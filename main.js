@@ -20,7 +20,8 @@ let total = document.getElementById("total");
 let count = document.getElementById("count");
 let category = document.getElementById("category");
 let submit = document.getElementById("submit");
-
+let mood = "create";
+let tmp;
 //get total
 function getTotal() {
   if (price.value !== "") {
@@ -30,7 +31,7 @@ function getTotal() {
     total.style.color = "black";
   } else {
     total.innerHTML = "";
-    // total.style.background = "#a00d02";
+    total.style.background = "#a00d02";
   }
 }
 
@@ -54,12 +55,19 @@ submit.onclick = function () {
     category: category.value,
   };
   //Count
-  if (newPro.count > 1) {
-    for (let i = 0; i < newPro.count; i++) {
+  if (mood === "create") {
+    if (newPro.count > 1) {
+      for (let i = 0; i < newPro.count; i++) {
+        dataPro.push(newPro);
+      }
+    } else {
       dataPro.push(newPro);
     }
   } else {
-    dataPro.push(newPro);
+    dataPro[tmp] = newPro;
+    mood = "create";
+    submit.innerHTML = "create";
+    count.style.display = "block";
   }
 
   localStorage.setItem("product", JSON.stringify(dataPro));
@@ -84,6 +92,7 @@ function clearData() {
 //Read Data
 
 function showData() {
+  getTotal();
   let table = "";
   for (let i = 0; i < dataPro.length; i++) {
     table += ` <tr>
@@ -96,7 +105,7 @@ function showData() {
     <td>${dataPro[i].total}</td>
     <td>${dataPro[i].category}</td>
     <td>
-      <button id="update">update</button>
+      <button onclick='updateData(${i})' id="update">update</button>
     </td>
     <td>
       <button onclick='deleteData(${i})' id="delete">delete</button>
@@ -126,4 +135,26 @@ function deleteAll() {
   localStorage.clear();
   dataPro.splice(0);
   showData();
+}
+
+//Update Data
+function updateData(i) {
+  // console.log(i);
+  title.value = dataPro[i].title;
+  price.value = dataPro[i].price;
+  taxes.value = dataPro[i].taxes;
+  ads.value = dataPro[i].ads;
+  discount.value = dataPro[i].discount;
+  category.value = dataPro[i].category;
+
+  count.style.display = "none";
+  submit.innerHTML = "Update";
+  mood = "update";
+  tmp = i;
+  scroll({
+    top: 0,
+    behavior: "smooth",
+  });
+
+  getTotal();
 }
